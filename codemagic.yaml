@@ -1,0 +1,26 @@
+workflows:
+    android-app:
+        name: Android app
+        instance_type : mac_mini_m1
+        environment:
+          vars:
+            java: 1.8
+            gradle: 8.0
+            JAVA_HOME: "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+        scripts:
+            - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            - brew install imagemagick
+            - chmod +x $FCI_BUILD_DIR/launcher_icon.sh
+            - $FCI_BUILD_DIR/launcher_icon.sh $icon_url
+            - chmod +x $FCI_BUILD_DIR/launcher_round.sh
+            - $FCI_BUILD_DIR/launcher_round.sh $icon_url
+            - chmod +x $FCI_BUILD_DIR/launcher_foreground.sh
+            - $FCI_BUILD_DIR/launcher_foreground.sh $icon_url $KEYSTORE_URL $STOREPASS $KEYALIAS $KEYPASS
+            - ls -l "$FCI_BUILD_DIR" 
+            - chmod +x "$FCI_BUILD_DIR/gradlew" 
+            - "$FCI_BUILD_DIR/gradlew assembleRelease"
+            - "$FCI_BUILD_DIR/gradlew bundleRelease"
+        artifacts:
+            #- build/outputs/**/**/*.apk
+            - app/build/outputs/apk/release/app-release.apk
+            - app/build/outputs/bundle/release/app-release.aab
