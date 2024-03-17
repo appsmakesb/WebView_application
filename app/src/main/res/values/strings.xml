@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Web To App</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_item_About">About</string>
+    <string name="drawer_item_Disclaimer">Disclaimer</string>
+    <string name="drawer_item_Share">Share</string>
+    <string name="drawer_item_Rate">Rate</string>
+    <string name="drawer_item_MoreApps">More Apps</string>
+    <string name="drawer_item_PrivacyPolicy">Privacy Policy</string>
+    <string name="drawer_item_Contact">Contact</string>
+    <string name="drawer_item_Exit">Exit</string>
+</resources>
